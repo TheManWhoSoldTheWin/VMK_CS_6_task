@@ -1,11 +1,11 @@
 .PHONY: all clean
 all: program
-save_program.o: save_program.c
-	gcc -m32 -std=c99 -c -o save_program.o save_program.c
+main.o: main.c
+	gcc -m32 -std=c99 -c -o main.o main.c
 func.o: func.asm
 	nasm -f elf32 -o func.o func.asm
-program: save_program.o func.o
-	gcc -m32 -o program save_program.o func.o
+program: main.o func.o
+	gcc -m32 -o program main.o func.o
 
 clean:
 	rm *.o program
